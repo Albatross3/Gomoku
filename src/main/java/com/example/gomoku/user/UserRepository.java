@@ -1,12 +1,8 @@
 package com.example.gomoku.user;
 
-import java.util.List;
-import java.util.Optional;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-public interface UserRepository {
-    void insert(User user);
-
-    List<User> findAll();
-
-    Optional<User> findByEmail(String email);
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
 }
