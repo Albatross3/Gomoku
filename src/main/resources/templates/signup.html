@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style_signup.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <title>회원가입 화면</title>
+</head>
+<body>
+    <section class="signup-form">
+        <h1>SIGN UP</h1>
+        <form th:action="@{/signup}" method="post">
+            <div class="input-area">
+                <input type="text" name="email" id="email" autocomplete="off" required>
+                <label for="email">EMAIL</label>
+            </div>
+
+            <div class="input-area">
+                <input type="password" name="password" id="password" autocomplete="off" required>
+                <label for="password">PASSWORD</label>
+            </div>
+
+            <div class="input-area">
+                <input type="password" name="verify-password" id="verify-password" autocomplete="off" required>
+                <label for="verify-password">CONFIRM PASSWORD</label>
+            </div>
+
+            <div class="input-area">
+                <input type="text" name="name" id="name" autocomplete="off" required>
+                <label for="name">NICK NAME</label>
+            </div>
+
+            <div class="btn-area">
+                <button id="btn" type="submit">SUBMIT</button>
+            </div>
+        </form>
+    
+    </section>
+    <script>
+        let id = $('#email');
+        let pw = $('#password');
+        let verify_pw = $('#verify-password');
+        let email = $('#name');
+        let btn = $('#btn');
+
+        $(btn).on('click',function(){
+            if($(id).val() == ""){
+                $(id).next('label').addClass('warning');
+                setTimeout(function() {
+                    $('label').removeClass('warning')
+                },1000);
+            }
+            else if($(pw).val() == "") {
+                $(pw).next('label').addClass('warning');
+                setTimeout(function() {
+                    $('label').removeClass('warning')
+                },1000);
+            } 
+            else if($(verify_pw).val() == "") {
+                $(verify_pw).next('label').addClass('warning');
+                setTimeout(function() {
+                    $('label').removeClass('warning')
+                },1000);
+            }
+            else if($(email).val() == "") {
+                $(email).next('label').addClass('warning');
+                setTimeout(function() {
+                    $('label').removeClass('warning')
+                },1000);
+            }
+            else {
+                fetch("http://localhost:8080/")
+            }
+        })
+    </script>
+</body>
+</html>
