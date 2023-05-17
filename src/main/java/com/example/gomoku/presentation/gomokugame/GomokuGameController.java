@@ -20,6 +20,12 @@ public class GomokuGameController {
   @MessageMapping("/stone")
   public void sendLocationOfStone(StonePlaceReq stonePlaceReq) {
     Long roomId = stonePlaceReq.getRoomId();
+    // 맨 처음 흑 / 백 판단하는 로직
+    if (stonePlaceReq.getLocation() == null) {
+      template.convertAndSend("/subscribe/gomoku-room/" + roomId, stonePlaceReq);
+      return;
+    }
+
 
 
     // 서로 시작한다는 요청없이 시작된다면 아래와 같은 로직

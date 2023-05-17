@@ -8,12 +8,14 @@ import lombok.Getter;
  */
 @Getter
 public class StonePlaceReq {
+  private final String userId;
   private final Long roomId;
   private final String color;
   private final int[] location;
   String winColor;
 
-  public StonePlaceReq(Long roomId, String color, int[] location) {
+  public StonePlaceReq(String userId, Long roomId, String color, int[] location) {
+    this.userId = userId;
     this.roomId = roomId;
     this.color = color;
     this.location = location;
