@@ -23,7 +23,7 @@ public class GomokuRoomService {
   public GomokuRoomCreateRes createGomokuRoom(GomokuRoomCreateReq gomokuRoomCreateReq) {
     GomokuRoom newGomokuRoom = toGomokuRoom(gomokuRoomCreateReq);
     GomokuRoom savedGomokuRoom = gomokuRoomRepository.save(newGomokuRoom);
-    return new GomokuRoomCreateRes(savedGomokuRoom.getRoomId());
+    return new GomokuRoomCreateRes(savedGomokuRoom.getRoomId(), savedGomokuRoom.getRoomName());
   }
 
   @Transactional
